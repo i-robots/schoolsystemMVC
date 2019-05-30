@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" th:href="@{/images/favicon.ico}" />
+
+    <title>School Management system</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    
+    <!-- custom CSS -->
+    <link rel="stylesheet" th:href="@{/css/custom.css}" />
+  
+   <!-- some custom styles -->
+    <style type="text/css">.col-sm-5 span{font-size: 12px;color: red;}</style>
+    
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" 
+          	data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">School System</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="about">About</a></li>
+            <li><a href="contact">Contact</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Register<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="Staff">Staff</a></li>
+                <li><a href="Student">Student</a></li>
+                <li><a href="#">Cashier</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Parents</li>
+                <li><a href="#">registration request</a></li>
+                <li><a href="#">Report</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="Student">Student</a></li>
+            <li  class="active"><a href="Staff">Staff</a></li>
+            <li><a href="/login">Login</a></li> 	
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>    
+    <div class="container">
+		<div class="jumbotron">
+	      <!-- Main component for a primary marketing message or call to action -->     
+	      <h3>Staff registration Form</h3><br>
+	      	<form th:object="${teacheRg}" method="POST" th:action="@{/Staff/Teacher}" name="myForm" enctype="utf8">	      	  	
+			<div class="row-lg">
+				<div class="col-sm-3">
+			      	<label>Subject*</label><br>
+      				<select th:field="*{subject}">
+      					<option th:each="seb : ${subj}" th:value =${seb.id} th:text=${seb.name}></option>
+      				</select> <br><br>
+			    </div>	
+			    <div class="col-sm-3">
+			    	<table>
+			    		<tr>
+			    			<th colspan="4">Select the classes you teach?</th>
+			    		</tr>
+			    		<tr>
+			    			<th colspan="4">---------------------------------------------</th>
+			    		</tr>
+				    	<tr>
+				    		<td>Nursery*</td>
+					    	<td th:each="grade : ${nursery}">
+						    	<input name="grades" type="checkbox" th:value="${grade.id}">
+						    	<span th:text=${grade.section}>A</span>
+						    </td>
+					    </tr>
+					    <tr>
+					    	<td>KG1*</td>
+					    	<td th:each="grade : ${kg1}">
+						    	<input name="grades" type="checkbox" th:value="${grade.id}">
+						    	<span th:text=${grade.section}>A</span>
+					    	</td>
+					    </tr>
+					    <tr>
+					    	<td>KG2*</td>
+					    	<td th:each="grade : ${kg2}">
+						    	<input name="grades" type="checkbox" th:value="${grade.id}">
+						    	<span th:text=${grade.section}>A</span>
+					    	</td>
+					    </tr>
+					    <tr>
+			    			<th colspan="4">----------------------------------------------</th>
+			    		</tr>
+					    <tr>
+					    	<td>One*</td>
+					    	<td th:each="grade : ${one}">
+						    	<input name="grades" type="checkbox" th:value="${grade.id}">
+						    	<span th:text=${grade.section}>A</span>
+					    	</td>
+					    </tr>
+					    <tr>
+					    	<td>Two*</td>
+					    	<td th:each="grade : ${two}">
+						    	<input name="grades" type="checkbox" th:value="${grade.id}">
+						    	<span th:text=${grade.section}>A</span>
+					    	</td>
+					    </tr>
+				    	<tr>
+				    		<td>Three*</td>
+					    	<td th:each="grade : ${theree}">
+						    	<input name="grades" type="checkbox" th:value="${grade.id}">
+						    	<span th:text=${grade.section}>A</span>
+						    </td>
+					    </tr>
+					    <tr>
+					    	<td>Four*</td>
+					    	<td th:each="grade : ${four}">
+						    	<input name="grades" type="checkbox" th:value="${grade.id}">
+						    	<span th:text=${grade.section}>A</span>
+					    	</td>
+					    </tr>
+				</table>
+			    </div>
+			    <div class="col-sm-3">
+			    	<table>
+			    		<tr>
+			    			<th colspan="4">----------------------------------------------</th>
+			    		</tr>
+			    		<tr>
+					    	<td>Five*</td>
+					    	<td th:each="grade : ${five}">
+						    	<input name="grades" type="checkbox" th:value="${grade.id}">
+						    	<span th:text=${grade.section}>A</span>
+					    	</td>
+					    </tr>
+				    	<tr>
+				    		<td>Six*</td>
+					    	<td th:each="grade : ${six}">
+						    	<input name="grades" type="checkbox" th:value="${grade.id}">
+						    	<span th:text=${grade.section}>A</span>
+						    </td>
+					    </tr>
+					    <tr>
+			    			<th colspan="4">----------------------------------------------</th>
+			    		</tr>
+					    <tr>
+					    	<td>Seven*</td>
+					    	<td th:each="grade : ${seven}">
+						    	<input name="grades" type="checkbox" th:value="${grade.id}">
+						    	<span th:text=${grade.section}>A</span>
+					    	</td>
+					    </tr>
+					    <tr>
+					    	<td>Eight*</td>
+					    	<td th:each="grade : ${eight}">
+						    	<input name="grades" type="checkbox" th:value="${grade.id}">
+						    	<span th:text=${grade.section}>A</span>
+					    	</td>
+					    </tr>
+					    <tr>
+			    			<th colspan="4">----------------------------------------------</th>
+			    		</tr>
+				    	<tr>
+				    		<td>Nine*</td>
+					    	<td th:each="grade : ${nine}">
+						    	<input name="grades" type="checkbox" th:value="${grade.id}">
+						    	<span th:text=${grade.section}>A</span>
+						    </td>
+					    </tr>
+					    <tr>
+					    	<td>Ten*</td>
+					    	<td th:each="grade : ${ten}">
+						    	<input name="grades" type="checkbox" th:value="${grade.id}">
+						    	<span th:text=${grade.section}>A</span>
+					    	</td>
+					    </tr>
+					    <tr>
+			    			<th colspan="4">----------------------------------------------</th>
+			    		</tr>
+					    <tr>
+					    	<td>Eleven*</td>
+					    	<td th:each="grade : ${eleven}">
+						    	<input name="grades" type="checkbox" th:value="${grade.id}">
+						    	<span th:text=${grade.section}>A</span>
+					    	</td>
+					    </tr>	
+					    <tr>
+					    	<td>Twelve*</td>
+					    	<td th:each="grade : ${twelve}">
+						    	<input name="grades" type="checkbox" th:value="${grade.id}">
+						    	<span th:text=${grade.section}>A</span>
+					    	</td>
+					    </tr>				  	
+				    </table>		   
+			    </div>
+			</div>							    	
+		    <div class="row-lg"> 		    	
+		    	<div class="col-sm-5">
+		    	    <br><button type="submit" class="btn btn-primary btn-md">submit</button>
+		    	</div>
+		    </div>	   		    	
+		</form>			 
+	    </div> <!-- /jumbotron -->
+    </div><!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+  </body>
+</html>

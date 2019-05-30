@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" th:href="@{/images/favicon.ico}" />
+
+    <title>School Management system</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    
+    <!-- custom CSS -->
+    <link rel="stylesheet" th:href="@{/css/custom.css}" />
+  
+   <!-- some custom styles -->
+    <style type="text/css">.col-sm-5 p{font-size: 12px;color: red;}</style>
+    
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" 
+          	data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">School System</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="about">About</a></li>
+            <li><a href="contact">Contact</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Register<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="Staff">Staff</a></li>
+                <li><a href="Student">Student</a></li>
+                <li><a href="#">Cashier</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Parents</li>
+                <li><a href="#">registration request</a></li>
+                <li><a href="#">Report</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li  class="active"><a href="Student">Student</a></li>
+            <li><a href="Staff">Staff</a></li>
+            <li><a href="/login">Login</a></li> 	
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>    
+    <div class="container">
+		<div class="jumbotron">
+		  <h4>| step 1 of 2 |</h4>
+	      <!-- Main component for a primary marketing message or call to action -->     
+	      <h3>Student registration Form</h3><br>
+	      	<form th:object="${profile}" method="POST" th:action="@{/Student}" enctype="multipart/form-data">	      	  
+      		<div class="row-lg">
+      			<div class="col-sm-5">
+		        	<label>First Name*</label>
+			        <input th:field="*{name}"/>
+			        <p th:each="error: ${#fields.errors('name')}"
+			          th:text="${error}">Validation error</p>
+				    </div>
+			    <div class="col-sm-5">
+			        <label>Last Name*</label>
+			        <input th:field="*{fathersName}"/>
+			        <p th:each="error : ${#fields.errors('fathersName')}"
+			          th:text="${error}">Validation error</p>
+			    </div>
+      		</div>	
+      		<div class="row-lg">
+      			 <div class="col-sm-5">
+			        <label>Section*</label>
+			        <select th:field="*{section}">
+			        	<option th:each="sec : ${sections}" th:value="${sec}" th:text=${sec}></option>
+			        </select>
+			    </div>	
+			    <div class="col-sm-5">
+			        <label>Email</label>
+			        <input type="email" th:field="*{email}"/>
+			        <p th:each="error : ${#fields.errors('email')}"
+			          th:text="${error}">Validation error</p>
+			    </div>		   		   	
+			</div>
+			<div class="row-lg">
+			    <div class="col-sm-5">
+			        <label>Sex*</label>
+			        <select th:field="*{sex}">
+			        	<option th:value="MALE">male</option>
+			        	<option th:value="FEMALE">female</option>
+			        </select>			        
+			    </div>
+			    <div class="col-sm-5">
+			        <label>ID*</label>
+			        <input type="number" th:field="*{Id}"/>
+			        <p th:each="error : ${#fields.errors('Id')}"
+			          th:text="${error}">Validation error</p>
+			        <p th:text="${idExist}"></p>
+			    </div>					    
+			</div>
+			<div class="row-lg">
+			    <div class="col-sm-5">
+			        <label>Grade*</label>
+			        <select th:field="*{grade}">
+			        	<option th:each="sec : ${grades}" th:value="${sec}" th:text=${sec}></option>
+			        </select>			        
+			    </div>
+			    <div class="col-sm-5">
+			        <label>Date of birth*</label>
+			        <input type="date" th:field="*{DateOfBirth}"/>		        
+			    </div>									   
+		    </div>
+		    <div class="row-lg">
+		    	<div class="col-sm-5">
+		    		<button type="submit" class="btn btn-primary btn-md">submit</button>
+		    	</div>	 
+		    	<div class="col-sm-5">
+			    	<label>Upload your photo</label>
+			        <input type="file" name="file" onchange="readURL(this);"/>
+			        <span th:text="${message}" style="color:red;font-size:12px;"></span>
+			        <img id="blah" src="#" alt="your image" />
+		    	</div>		    	
+		    </div>	    		    	
+		</form>			 
+	    </div> <!-- /jumbotron -->
+    </div><!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script type="text/javascript">
+	    function readURL(input) {
+	        if (input.files && input.files[0]) {
+	            var reader = new FileReader();
+	            reader.onload = function (e) {
+	                $('#blah')
+	                    .attr('src', e.target.result)
+	                    .width(50)
+	                    .height(50);
+	            };	
+	            reader.readAsDataURL(input.files[0]);
+	        }
+	    }
+    </script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+  </body>
+</html>

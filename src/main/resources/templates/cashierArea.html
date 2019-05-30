@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" th:href="@{/images/favicon.ico}" />
+
+    <title>School Management system</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    
+    <!-- custom CSS -->
+    <link rel="stylesheet" th:href="@{/css/custom.css}" />
+  
+   <!-- some custom styles -->
+    <style type="text/css">.col-sm-5 p{font-size: 12px;color: red;}</style>
+    
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" 
+          	data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">School System</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="about">About</a></li>
+            <li><a href="contact">Contact</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/logout">LogOut</a></li> 	
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>    
+    <div class="container">
+		<div class="jumbotron">
+		<h4>Hello <span th:text="${cashier.name}"></span>!</h4>
+	      <!-- Main component for a primary marketing message or call to action -->     
+	      <h3>Cashier working Area</h3><br>	      	  
+      		<div class="row-lg">
+      			<div class="col-sm-5">
+      				<span><span style="font-size: 18px;">Year:</span>
+			        <select>
+			            <option value="2018">2017/2018</option>
+			            <option value="2019">2018/2019</option>
+			            <option value="2020">2019/2020</option>
+			            <option value="2021">2020/2021</option>
+			        </select>
+			        <select>
+			            <option value="sept">September</option>
+			            <option value="oct">October</option>
+			            <option value="nov">November</option>
+			            <option value="dec">December</option>
+			            <option value="jan">January</option>
+			            <option value="feb">February</option>
+			            <option value="march">March</option>
+			            <option value="april">April</option>
+			            <option value="may">May</option>
+			            <option value="june">June</option>
+			            <option value="july">July</option>
+			            <option value="august">August</option>
+			        </select>
+			        <span><span>search</span>
+			        <input type="text" name="search"><span>By:</span>
+			        <select>
+			            <option value="byid">ID</option>
+			            <option value="byname">Name</option>
+			            <option value="byclass">Class</option>
+			        </select>
+			        </span>
+			        </span><br></br>      	  
+			      <table> 
+				      <tr>
+				        <th height="15%">student's payment List</th>
+				        </tr>
+				      <tr>
+				        <td width="15%">Id</td>
+				        <td width="25%">Name</td>
+				        <td>Gender</td>
+				        <td>Class</td>
+				        <td>Status</td>
+				        </tr>
+			     </table>
+      			<div class="row-lg">
+	      			<div class="col-sm-5">
+			 		</div>
+		 		</div>
+		 		</div>
+		 	</div>
+	    </div> <!-- /jumbotron -->
+    </div><!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+  </body>
+</html>

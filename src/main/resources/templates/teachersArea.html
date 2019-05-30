@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" th:href="@{/images/favicon.ico}" />
+
+    <title>School Management system</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    
+    <!-- custom CSS -->
+    <link rel="stylesheet" th:href="@{/css/custom.css}" />
+  
+   <!-- some custom styles -->
+    <style type="text/css">.col-sm-5 p{font-size: 12px;color: red;}</style>
+    
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" 
+          	data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">School System</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="about">About</a></li>
+            <li><a href="contact">Contact</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+          	<li><a href="/studentList">Students List</a></li>
+          	<li><a href="/PostGrade">Post Grade</a></li>
+            <li><a href="/logout">LogOut</a></li> 	
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>    
+    <div class="container">
+		<div class="jumbotron">
+		<h4>Hello Mr. <span th:text="${teacher.name}"></span> <span th:text="${teacher.lastname}"></span>!</h4>
+	      <!-- Main component for a primary marketing message or call to action -->     
+	      <fieldset>
+	      	<legend>Here are a list of actions you can do</legend>
+	      	<ul>
+		      	<li>Post Grades</li>
+		      	<li>Create Assesments</li>
+		      	<li>See your students</li>
+	      	</ul>
+	      </fieldset>	      	  
+      		<div class="row-lg">
+      			<div class="col-sm-5">
+      				
+		 		</div>
+		 	</div>
+	    </div> <!-- /jumbotron -->
+    </div><!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+  </body>
+</html>
